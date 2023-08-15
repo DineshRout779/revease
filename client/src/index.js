@@ -36,7 +36,7 @@ const appRouter = createBrowserRouter([
         children: [
           {
             index: true,
-            element: <ProductList />,
+            element: <ProductList type='all' />,
           },
           {
             path: 'add',
