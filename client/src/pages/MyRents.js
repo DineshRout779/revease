@@ -40,22 +40,29 @@ const MyRents = () => {
 
   return (
     <div className='container mx-auto max-w-[1080px] w-[90%] marker:shadow rounded-md p-4 my-8'>
-      <div className='block md:flex gap-8 '>
+      <div>
         {rents.length !== 0 ? (
           rents.map((rent) => (
             <div
-              className='flex gap-8 p-4 bg-gray-100 rounded-md'
+              className='flex gap-8 p-4 bg-gray-100 rounded-md my-4'
               key={rent._id}
             >
               <div className='basis-1/5'>
                 <img
                   src={rent?.vehicle.url}
                   alt={rent?.vehicle.title}
-                  className='block w-full rounded-md'
+                  className='block w-full rounded-md aspect-video'
                 />
               </div>
               <div className='basis-4/5'>
                 <h3 className='text-xl'>{rent?.vehicle.title}</h3>
+                <p className='text-gray-600'>
+                  {new Date(rent?.from).toDateString()} -{' '}
+                  {new Date(rent?.to).toDateString()}
+                </p>
+                <p className='text-gray-600'>
+                  Location: <span className='capitalize'>{rent?.location}</span>
+                </p>
               </div>
             </div>
           ))
@@ -66,4 +73,5 @@ const MyRents = () => {
     </div>
   );
 };
+
 export default MyRents;
