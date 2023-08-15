@@ -39,9 +39,6 @@ exports.addVehicle = async (req, res) => {
 exports.getAllVehicle = async (req, res) => {
   try {
     let vehicles = [];
-
-    console.log(req.query.type);
-
     if (req.query.type) {
       vehicles =
         req.query.type === 'all'

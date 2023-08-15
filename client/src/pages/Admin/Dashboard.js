@@ -1,9 +1,17 @@
-import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, Outlet } from 'react-router-dom';
 import { getClassname } from '../../Components/Utils/getClassName';
+import { getAllProducts } from '../../features/vehicles/vehicleActions';
 
 const Dashboard = () => {
   const { userInfo } = useSelector((state) => state.user);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getAllProducts());
+  }, [dispatch]);
 
   return (
     <div className='container mx-auto max-w-[1080px] w-[95%] min-h-[90vh]'>

@@ -3,15 +3,13 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllProducts } from '../../features/vehicles/vehicleActions';
 
-const ProductList = () => {
+const ProductList = ({ type }) => {
   const { vehicles, error, loading } = useSelector((state) => state.vehicles);
   const dispatch = useDispatch();
 
-  console.log(vehicles);
-
   useEffect(() => {
-    dispatch(getAllProducts());
-  }, [dispatch]);
+    dispatch(getAllProducts({ type }));
+  }, [dispatch, type]);
 
   if (loading) {
     return <p>Loading...</p>;
@@ -36,7 +34,7 @@ const ProductList = () => {
       </thead>
       <tbody>
         {vehicles.map((v, i) => (
-          <tr className='border text-center'>
+          <tr className='border text-center' key={v._id}>
             <td className='py-2'>{i + 1}</td>
             <td>{v.title}</td>
             <td>{v.vehicleType}</td>
