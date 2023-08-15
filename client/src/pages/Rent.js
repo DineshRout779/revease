@@ -96,7 +96,6 @@ const Rent = () => {
             )}
             <form onSubmit={onRent} className='w-full max-w-[360px] block'>
               <select ref={locationRef} className='w-full my-4 rounded-md'>
-                <option defaultValue>SET YOUR LOCATION</option>
                 <option value='delhi'>Delhi</option>
                 <option value='bangalore'>Bangalore</option>
                 <option value='kolkata'>Kolkata</option>
